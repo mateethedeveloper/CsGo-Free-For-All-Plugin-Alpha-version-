@@ -26,14 +26,13 @@ public Plugin myinfo =
 
 public void OnPluginStart()
 {
-	AutoExecConfig(true, "plugin.hffa", "sourcemod"); //configot loadolja
+	AutoExecConfig(true, "plugin.hffa", "sourcemod");
 	
-	g_hFFAPlayerCount = CreateConVar("sm_hFFA_playercount", "12", "Set the player count when ffa is enabled");  //beallitja x re az ff a kikapcsolasat
-	
+	g_hFFAPlayerCount = CreateConVar("sm_hFFA_playercount", "12", "Set the player count when ffa is enabled"); 
 
-	teamAreEnemies = FindConVar("mp_teammates_are_enemies"); //convar semmi extra
+	teamAreEnemies = FindConVar("mp_teammates_are_enemies"); 
 	
-	HookEvent("round_prestart", Event_RoundStart);  //hook
+	HookEvent("round_prestart", Event_RoundStart);  
 	
 	
     
@@ -45,12 +44,12 @@ public Action Event_RoundStart(Event event, const char[] name, bool dontBroadcas
 	if(GetClientCount() < g_hFFAPlayerCount.IntValue + 1)
     {
         teamAreEnemies.BoolValue = true;
-        PrintToChatAll("\x04[NightLight FFA] \x05Friendly fire is \x04activated");  //chat uzenete amikor aktiv
+        PrintToChatAll("\x04[NightLight FFA] \x05Friendly fire is \x04activated");  
         
 	} else if(GetClientCount() > g_hFFAPlayerCount.IntValue)
 	{
    		teamAreEnemies.BoolValue = false;
-   		PrintToChatAll("\x04[NightLight FFA] \x05Friendly fire is \x02deactivated"); //chat uzenete amikor inaktiv
+   		PrintToChatAll("\x04[NightLight FFA] \x05Friendly fire is \x02deactivated"); 
    		
 	}
 }
